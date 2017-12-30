@@ -26,6 +26,11 @@ describe('counter', function() {
         expect(incrementBtn).not.toBe(null);
     });
 
+    it('has #decrementBtn element', function() {
+        var decrementBtn = browser.window.document.querySelector('#decrementBtn');
+        expect(decrementBtn).not.toBe(null);
+    });
+
     it('counter contains 0', function() {
         var counter = browser.window.document.querySelector('#counter');
         expect(counter.textContent).toBe('0');
@@ -39,5 +44,15 @@ describe('counter', function() {
         incrementBtn.dispatchEvent(clickEvent);
 
         expect(counter.textContent).toBe('1');
+    });
+
+    it('counter contains -1 when decrement button was clicked', function() {
+        var counter = browser.window.document.querySelector('#counter');
+        var decrementBtn = browser.window.document.querySelector('#decrementBtn');
+
+        var clickEvent = new browser.window.MouseEvent('click');
+        decrementBtn.dispatchEvent(clickEvent);
+
+        expect(counter.textContent).toBe('-1');
     });
 });
